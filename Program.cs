@@ -108,6 +108,12 @@ bool DealingWithArgsOk(string[] args, out string inputpath, out string outputpat
 {
     inputpath = "Input.txt";
     outputpath = "Output.txt";
+    string argsFlatten = "";
+    int i=0;
+    foreach(var arg in args){
+        argsFlatten += "arg["+ i++ +"] " + arg + "; ";
+    }
+    Print("args: " + argsFlatten);
 
     // No args. Use default parameters
     if(args.Length == 0)
@@ -119,7 +125,7 @@ bool DealingWithArgsOk(string[] args, out string inputpath, out string outputpat
         return false;
     }
     // Path of input and output files
-    else if(args[0]!="" && args[1]!=""){
+    else if(args[0]!="" &&args.Length > 1 && args[1]!=""){
         inputpath = args[0];
         outputpath = args[1];
     }
